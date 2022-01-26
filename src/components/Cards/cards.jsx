@@ -26,7 +26,9 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
                 separator=","
               />
             </Typography>
-            <Typography color="textSecondary">{lastUpdate}</Typography>
+            <Typography color="textSecondary">
+              {new Date(lastUpdate).toDateString()}
+            </Typography>
             <Typography variant="body2">No.of Active Cases</Typography>
           </CardContent>
         </Grid>
@@ -36,8 +38,17 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             <Typography color="textSecondary" gutterBottom>
               Recovered
             </Typography>
-            <Typography variant="h5">Real Data</Typography>
-            <Typography color="textSecondary">{lastUpdate}</Typography>
+            <Typography variant="h5">
+              <CountUp
+                start={0}
+                end={recovered.value}
+                duration={2.5}
+                separator=","
+              />
+            </Typography>
+            <Typography color="textSecondary">
+              {new Date(lastUpdate).toDateString()}
+            </Typography>
             <Typography variant="body2">No.of Recoveries</Typography>
           </CardContent>
         </Grid>
@@ -47,8 +58,18 @@ const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
             <Typography color="textSecondary" gutterBottom>
               Deaths
             </Typography>
-            <Typography variant="h5">{deaths.value}</Typography>
-            <Typography color="textSecondary">{lastUpdate}</Typography>
+            <Typography variant="h5">
+              {" "}
+              <CountUp
+                start={0}
+                end={deaths.value}
+                duration={2.5}
+                separator=","
+              />
+            </Typography>
+            <Typography color="textSecondary">
+              {new Date(lastUpdate).toDateString()}
+            </Typography>
             <Typography variant="body2">No.of Deaths</Typography>
           </CardContent>
         </Grid>
